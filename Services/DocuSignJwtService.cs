@@ -11,10 +11,10 @@ using System.IdentityModel.Tokens.Jwt;
 
 public class DocuSignJwtService
 {
-    // ⭐ REQUIRED — Replace with your Integration Key (Client ID)
+    // Replace with  Integration Key (Client ID)
     private readonly string IntegrationKey = "9d694b31-a18f-45de-bbd1-99298120beec";
 
-    // ⭐ REQUIRED — Replace with your API Username (User GUID)
+    //  Replace with  API Username (User GUID)
     private readonly string UserId = "1d3a191b-f293-40c0-bd29-6ae1e8b6111a";
 
     // DocuSign demo auth server

@@ -1,0 +1,103 @@
+Solution Design 
+
+Approach 
+The solution is designed as a backend integration layer between onboarding requests and DocuSign. 
+ The service receives employee information, evaluates business rules, creates a signing workflow, and tracks document status. 
+
+Workflow 
+HR System / API Request → Backend Service → Business Rule Evaluation → DocuSign Envelope Creation → Status Tracking 
+
+                          ┌───────────────┐ 
+                          │     Start     │ 
+                          └───────┬───────┘ 
+                                  │ 
+                                  ▼ 
+                          ┌───────────────┐ 
+                          │ Employee Data │ 
+                          └───────┬───────┘ 
+                                  │ 
+                                  ▼ 
+                          ┌───────────────┐ 
+                          │ Check Position│ 
+                          └───────┬───────┘ 
+                                  │ 
+                                  ▼ 
+                    ┌───────────────────────────┐ 
+                    │     Manager or Above?     │ 
+                    └───────────┬───────────────┘ 
+
+                               │ 
+                   ┌────────────┴────────────┐ 
+                   │                         │ 
+                   Yes                       No 
+                   │                         │ 
+
+                   ▼                         ▼ 
+       ┌───────────────────────┐   ┌───────────────────────┐ 
+       │ Add Department Head   │   │ Skip Department Head │ 
+       └─────────────┬─────────┘   └─────────────┬─────────┘ 
+                     │                           │ 
+                     └──────────────┬────────────┘ 
+                                    ▼ 
+                          ┌───────────────┐ 
+                          │    HR Added   │ 
+                          └───────┬───────┘ 
+                                  │ 
+                                  ▼ 
+
+                          ┌───────────────┐ 
+                          │ Employee Added│ 
+                          └───────┬───────┘ 
+                                  │ 
+                                  ▼ 
+                    ┌───────────────────────────┐ 
+                    │   Create & Send Envelope  │ 
+                    └───────────┬───────────────┘ 
+                                │ 
+                                ▼ 
+                          ┌───────────────┐ 
+                          │  Track Status │ 
+                          └───────────────┘ 
+
+ 
+
+Components 
+API Layer: Receives onboarding requests. 
+Business Logic Layer: Determines recipient routing based on employee level. 
+DocuSign Service: Handles authentication and envelope creation. 
+DocuSign Rest API: create and send envelope 
+Docuisgn Status API: tracks envelope status 
+
+Design Decision 
+Business rules are handled inside the integration layer rather than inside DocuSign. 
+ This makes workflow updates easier to maintain. 
+
+                         ┌──────────────────────────┐ 
+                         │        HR System         │ 
+                         └─────────────┬────────────┘ 
+                                       │ 
+                                       ▼(POST onboarding) 
+                         ┌──────────────────────────┐ 
+                         │           API            │ 
+                         └─────────────┬────────────┘ 
+                                       │ 
+                                       ▼(apply business rules) 
+                         ┌──────────────────────────┐ 
+                         │      Business Logic      │ 
+                         └─────────────┬────────────┘ 
+                                       │ 
+                                       ▼(create envelope request) 
+                         ┌──────────────────────────┐ 
+                         │       DocuSign API       │ 
+                         └─────────────┬────────────┘ 
+                                       │ 
+                                       ▼(send envelope) 
+                         ┌──────────────────────────┐ 
+                         │     Recipient Emails     │ 
+                         └─────────────┬────────────┘ 
+                                       │ 
+                                       ▼(signing happens) 
+                         ┌──────────────────────────┐ 
+                         │     Envelope Status      │ 
+                         └─────────────┬────────────┘ 
+                                         

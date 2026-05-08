@@ -1,0 +1,111 @@
+{
+  "info": {
+    "_postman_id": "691f1ce5-a254-4d7e-b9e4-2a86391f773a",
+    "name": "Employee Onboarding",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54404478",
+    "_collection_link": "https://go.postman.co/collection/54404478-691f1ce5-a254-4d7e-b9e4-2a86391f773a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get Envelope Status",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJ0eXAiOiJNVCIsImFsZyI6IlJTMjU2Iiwia2lkIjoiNjgxODVmZjEtNGU1MS00Y2U5LWFmMWMtNjg5ODEyMjAzMzE3In0.AQoAAAABAAUABwCA88fr5qXeSAgAgFuMTe-l3kgCABsZOh2T8sBAvSlq4ei2ERoVAAEAAAAYAAIAAAAFAAAAHQAAAA0AJAAAAGE5OTBkOWNiLTZkYWQtNDlkYS05Y2QzLWUzYzkwMzRjMmIxMSIAJAAAAGE5OTBkOWNiLTZkYWQtNDlkYS05Y2QzLWUzYzkwMzRjMmIxMRIAAQAAAAYAAABqd3RfYnIjACQAAABhOTkwZDljYi02ZGFkLTQ5ZGEtOWNkMy1lM2M5MDM0YzJiMTE.FESL0CgrrH6IhxVXy8xBwgwSBVGMWy9X2aHWT9i0z95VaK_iLGjwUGwP-5x4E-R3b0NDM2x7nvDbR9a0iIgUv-eJJamidQ0kZm5GvyRzIUMkq7ralRT4_1wH7rDYC82xmY0dRJmTTZ9GcuZK9L1_NwcNkAba_0J8w2Bbgean1J0PDJSpuQCOhbUT9z3iiesUcWo-dyHGSyyHmrtfxNyj27V3czQatvWy0p4mtqLREyNdwsS2cHOimHdzN6qAxroyp6HH-Fz0GEuAtUoiDiwhE2jYQOJonp_sWPfwFDlZx_VyFhtRhl5h6nI8yXpJpbJJvs8NuOyhVDi2SZVG_l9Jiw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "https://account-d.docusign.com/oauth/userinfo",
+          "protocol": "https",
+          "host": [
+            "account-d",
+            "docusign",
+            "com"
+          ],
+          "path": [
+            "oauth",
+            "userinfo"
+          ]
+        },
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+      },
+      "response": []
+    },
+    {
+      "name": "Create Envelope",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"EmployeeName\": \"Rutuja\",\n  \"EmployeeEmail\": \"rutujasanadi@gmail.com\",\n  \"JobLevel\": \"Manager\",\n  \"DeptHeadName\": \"Rutuja\",\n  \"DeptHeadEmail\": \"rutujasolopics@gmail.com\"\n  \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5191/start-onboarding",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5191",
+          "path": [
+            "start-onboarding"
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": []
+    }
+  ]
+}

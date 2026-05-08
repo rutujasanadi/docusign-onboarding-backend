@@ -1,0 +1,27 @@
+HR Onboarding Automation Using DocuSign 
+
+Background 
+AcmeTech currently handles employee onboarding manually. HR sends agreements through email and tracks signatures separately. 
+This process works for small hiring volumes but becomes difficult to manage during rapid hiring periods. 
+The goal is to automate document signing using DocuSign so onboarding becomes faster, more consistent, and easier to track. 
+
+Problem Statement 
+The current onboarding process depends on manual coordination between HR and new employees. 
+ This creates challenges such as delayed agreement completion, missing approvals, lack of visibility into signing progress, and increased manual effort for HR teams. 
+
+Objective 
+Build a backend integration service that automates the employee agreement signing workflow. 
+ The service should receive onboarding details, create a DocuSign envelope, apply signing order rules, track document progress, and store onboarding status. 
+
+Scope 
+This solution focuses only on backend integration. 
+ External HR systems are not included. 
+ The onboarding request will be simulated using API calls. 
+
+Business Rules 
+Standard enployee?--->HR Manager--->Employee
+Manager or Above?--->HR Manager--->Employee(manager)--->Department Head 
+
+Expected Outcome 
+The onboarding workflow becomes automated. 
+ HR no longer needs to manually manage document approvals. 
