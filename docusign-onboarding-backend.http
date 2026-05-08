@@ -1,0 +1,6 @@
+@docusign_onboarding_backend_HostAddress = http://localhost:5191
+
+GET {{docusign_onboarding_backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
