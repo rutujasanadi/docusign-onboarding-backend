@@ -99,13 +99,21 @@ The service acts as a middleware between an HR onboarding system and DocuSign. I
                            └───────────────┘ 
 
 Setup Instructions 
+
 1.Prerequisites 
+
 .NET 8 SDK installed 
+
 DocuSign Developer (Demo) Account 
+
 Postman installed 
+
 A DocuSign Template with roles: 
+
   HR Manager 
+  
   Employee 
+  
   Dept Head 
 
  
@@ -115,6 +123,7 @@ A DocuSign Template with roles:
 -git clone <repo-url> 
 
 -cd docusign-onboarding-backend 
+
 
 3.Configure DocuSign Credentials 
 
@@ -138,6 +147,7 @@ A DocuSign Template with roles:
 
 } 
 
+
 What each value means: 
 
 IntegrationKey → From DocuSign → Settings → Apps & Keys 
@@ -150,9 +160,11 @@ PrivateKeyPath → Path to RSA private key
 
 AccountId → DocuSign account ID (numeric) 
 
+
 4.Add Your Private Key 
 
 Place RSA private key file in the project root: /private.key 
+
 
 5. Configure Your DocuSign Template 
 
@@ -160,9 +172,11 @@ Copy the Template ID
 
 Paste it into Program.cs ( string templateId = "template-id"); 
 
+
 6. Run the Application 
 
  dotnet run 
+
 
 7. Test Using Postman 
 
@@ -188,15 +202,16 @@ This collection includes:
 
 } 
 
- 
 
-Copy the returned envelopeId and call: 
+7. Copy the returned envelopeId and call: 
 
           -GET /envelope-status/{envelopeId} 
+
 
 DocuSign Developer Account Setup 
 
 Follow these steps to configure DocuSign: 
+
 
 01.Create a Developer Account 
 
@@ -261,11 +276,13 @@ POST /start-onboarding --> Creates a DocuSign envelope using a template and dyna
 
 GET /envelope-status/{envelopeId}---> Returns real time envelope metadata from DocuSign. 
 
+
 Business Rules 
 
 Standard Employee: HR → Employee 
  
 Manager Level and Above: HR → Employee → Department Head 
+
 
 Assumptions 
 
@@ -274,31 +291,16 @@ Assumptions
 - Department head email is provided in request 
 - Demo environment is used 
 
+
 Known Limitations 
 
 - No UI included 
 - Simplified role based logic 
 - No retry mechanism for failed API calls 
  
-
-Postman Collection 
-
-- This project includes a Postman collection for testing the onboarding workflow. 
-
-Collection File 
-
-Employee Onboarding.postman_collection. 
-This file contains two API requests: 
-
-POST /start-onboarding — Creates a DocuSign envelope using the onboarding template 
-
-GET /envelope-status/{envelopeId} — Retrieves real‑time envelope status from DocuSign 
-
 Tech Stack 
-
 C# 
 Postman 
-
 JWT oAuth 2.0 
 DocuSign eSignature  Rest API 
 
