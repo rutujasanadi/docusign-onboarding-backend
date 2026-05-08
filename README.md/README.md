@@ -173,20 +173,20 @@ What each value means:
     -Paste it into Program.cs ( string templateId = "template-id"); 
 
 
-6. Run the Application 
+6.Run the Application 
 
-       -dotnet run 
+    -dotnet run 
 
 
-7. Test Using Postman 
+7.Test Using Postman 
 
 Import the file : Employee Onboarding.postman_collection 
 
 This collection includes: 
 
-      - POST /start-onboarding 
+    - POST /start-onboarding 
 
-       -GET /envelope-status/{envelopeId} 
+    -GET /envelope-status/{envelopeId} 
 
         Example : { 
 
@@ -203,9 +203,9 @@ This collection includes:
     } 
 
 
-7. Copy the returned envelopeId and call: 
+8.Copy the returned envelopeId and call: 
 
-          -GET /envelope-status/{envelopeId} 
+    -GET /envelope-status/{envelopeId} 
 
 
 DocuSign Developer Account Setup 
