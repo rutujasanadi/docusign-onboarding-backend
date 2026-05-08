@@ -131,8 +131,6 @@ Place RSA private key file in the project root: /private.key
 Copy the Template ID 
 Paste it into Program.cs ( string templateId = "template-id"); 
 
- 
-
 6. Run the Application 
  dotnet run 
 
@@ -150,16 +148,8 @@ This collection includes:
   "deptHeadEmail": "test2@exampe.com" 
 } 
 
- 
-
 8. Copy the returned envelopeId and call: 
      -GET /envelope-status/{envelopeId} 
-
- 
-
- 
-
- 
 
 DocuSign Developer Account Setup 
 Follow these steps to configure DocuSign: 
@@ -186,9 +176,7 @@ https://account-d.docusign.com/oauth/auth?
     &client_id= <integration key> 
     &redirect_uri= <redirect URI> 
 
-Now user will be prompted to sign in to their account and give consent for app to impersonate them. After user grants permission, app will be able to use the OAuth JWT Grant flow to impersonate them and make API calls. 
-
- 
+Now user will be prompted to sign in to their account and give consent for app to impersonate them. After user grants permission, app will be able to use the OAuth JWT Grant flow to impersonate them and make API calls.  
 
 06. Create a Template 
 Upload onboarding PDF and add template roles: HR Manager, Employee, Dept Head. 
