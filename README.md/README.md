@@ -104,7 +104,7 @@ Setup Instructions
 
     .NET 8 SDK installed 
     
-    DocuSign Developer (Demo) Account 
+    DocuSign Developer (Demo) Account(account set up steps are provided below)
     
     Postman installed 
     
