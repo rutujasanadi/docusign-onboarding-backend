@@ -99,22 +99,14 @@ The service acts as a middleware between an HR onboarding system and DocuSign. I
                            └───────────────┘ 
 
 Setup Instructions 
-
 1.Prerequisites 
-
 .NET 8 SDK installed 
-
 DocuSign Developer (Demo) Account 
-
 Postman installed 
-
 A DocuSign Template with roles: 
-
-HR Manager 
-
-Employee 
-
-Dept Head 
+  HR Manager 
+  Employee 
+  Dept Head 
 
  
 
