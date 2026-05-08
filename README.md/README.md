@@ -120,7 +120,7 @@ Setup Instructions
 
 2.Clone the Repository 
 
-    -git clone <repo-url> 
+    -git clone : https://github.com/rutujasanadi/docusign-onboarding-backend
     
     -cd docusign-onboarding-backend 
 
