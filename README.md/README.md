@@ -166,11 +166,11 @@ What each value means:
     -Place RSA private key file in the project root: /private.key 
 
 
-5. Configure Your DocuSign Template 
+5.Configure Your DocuSign Template 
 
-        -Copy the Template ID 
+    -Copy the Template ID 
         
-        -Paste it into Program.cs ( string templateId = "template-id"); 
+    -Paste it into Program.cs ( string templateId = "template-id"); 
 
 
 6. Run the Application 
@@ -227,20 +227,20 @@ Follow these steps to configure DocuSign:
 
 03.Enable JWT Authentication 
 
-      -Generate RSA Private and public key and enable 'Account Impersonation' under Authentication settings.  
+    -Generate RSA Private and public key and enable 'Account Impersonation' under Authentication settings.  
 
  
 
-04. Get Your API Username 
+04.Get Your API Username 
 
-        -Copy the API Username (GUID) from user profile; this is required for JWT impersonation. 
+    -Copy the API Username (GUID) from user profile; this is required for JWT impersonation. 
 
  
 
-05. Request application consent 
+05.Request application consent 
 
-        -Before making any API calls using JWT Grant, we must get user’s consent for app to impersonate them. 
-        -To get this consent, open the below Sample URI in embedded browser, replacing the value of client_id with integration key, scope and redirect URI 
+    -Before making any API calls using JWT Grant, we must get user’s consent for app to impersonate them. 
+    -To get this consent, open the below Sample URI in embedded browser, replacing the value of client_id with integration key, scope and redirect URI 
 
         https://account-d.docusign.com/oauth/auth? 
     
