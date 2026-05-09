@@ -11,16 +11,13 @@ using System.IdentityModel.Tokens.Jwt;
 
 public class DocuSignJwtService
 {
-    // Replace with  Integration Key (Client ID)
+    
     private readonly string IntegrationKey = "9d694b31-a18f-45de-bbd1-99298120beec";
 
-    //  Replace with  API User (User GUID)
     private readonly string UserId = "1d3a191b-f293-40c0-bd29-6ae1e8b6111a";
 
-    // DocuSign demo auth server
     private readonly string AuthServer = "account-d.docusign.com";
 
-    // Path to  private key file
     private readonly string PrivateKeyPath = "private.key";
 
     public async Task<string> GetAccessTokenAsync()
