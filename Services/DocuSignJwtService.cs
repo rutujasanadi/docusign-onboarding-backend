@@ -14,28 +14,28 @@ public class DocuSignJwtService
     // Replace with  Integration Key (Client ID)
     private readonly string IntegrationKey = "9d694b31-a18f-45de-bbd1-99298120beec";
 
-    //  Replace with  API Username (User GUID)
+    //  Replace with  API User (User GUID)
     private readonly string UserId = "1d3a191b-f293-40c0-bd29-6ae1e8b6111a";
 
     // DocuSign demo auth server
     private readonly string AuthServer = "account-d.docusign.com";
 
-    // Path to your private key file
+    // Path to  private key file
     private readonly string PrivateKeyPath = "private.key";
 
     public async Task<string> GetAccessTokenAsync()
     {
-        // 1. Load private key
+        //  Load private key
         var privateKeyText = File.ReadAllText(PrivateKeyPath);
 
         var rsa = RSA.Create();
         rsa.ImportFromPem(privateKeyText.ToCharArray());
         var securityKey = new RsaSecurityKey(rsa);
 
-        // 2. Create signing credentials
+        //  Create signing credentials
         var creds = new SigningCredentials(securityKey, SecurityAlgorithms.RsaSha256);
 
-        // 3. Build JWT assertion
+        //  Build JWT assertion
         var tokenHandler = new JwtSecurityTokenHandler();
         var now = DateTime.UtcNow;
 
@@ -55,7 +55,7 @@ public class DocuSignJwtService
         var jwt = tokenHandler.CreateJwtSecurityToken(tokenDescriptor);
         var assertion = tokenHandler.WriteToken(jwt);
 
-        // 4. Exchange JWT for access token
+        //  Exchange JWT for access token
         using var client = new HttpClient();
         var body = new FormUrlEncodedContent(new[]
         {
@@ -69,7 +69,7 @@ public class DocuSignJwtService
         if (!response.IsSuccessStatusCode)
             throw new Exception("JWT authentication failed: " + json);
 
-        // 5. Extract access token
+        //  Extract access token
         var doc = System.Text.Json.JsonDocument.Parse(json);
         return doc.RootElement.GetProperty("access_token").GetString();
     }
