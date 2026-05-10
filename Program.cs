@@ -9,11 +9,11 @@ builder.Services.AddSingleton<DocuSignJwtService>();
 var app = builder.Build();
 
 // CREATE ENVELOPE
-
-app.MapPost("/start-onboarding", async (OnboardingRequest req, DocuSignJwtService jwt) =>
+app.MapPost("/start-onboarding", async (OnboardingRequest req, DocuSignJwtService jwt, IConfiguration config) =>
 {
-    string accountId = "47566195";
-    string templateId = "1f5388fd-12c4-4d95-9275-68ec9b15053d";
+
+    string accountId = config["DocuSign:AccountId"];
+    string templateId = config["DocuSign:TemplateId"];
 
     string accessToken = await jwt.GetAccessTokenAsync();
 
@@ -81,10 +81,9 @@ app.MapPost("/start-onboarding", async (OnboardingRequest req, DocuSignJwtServic
 });
 
 // CHECK ENVELOPE STATUS
-
-app.MapGet("/envelope-status/{envelopeId}", async (string envelopeId, DocuSignJwtService jwt) =>
+app.MapGet("/envelope-status/{envelopeId}", async (string envelopeId, DocuSignJwtService jwt, IConfiguration config) =>
 {
-    string accountId = "47566195";
+    string accountId = config["DocuSign:AccountId"];
     string accessToken = await jwt.GetAccessTokenAsync();
 
     using var client = new HttpClient { Timeout = TimeSpan.FromSeconds(20) };
