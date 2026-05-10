@@ -133,15 +133,17 @@ Setup Instructions
     
       "DocuSign": { 
 
-    "IntegrationKey": "<your-integration-key>", 
+    "IntegrationKey": "integration key", 
 
-    "UserId": "<your-api-username-guid>", 
+    "UserId": "api user guid", 
 
     "AuthServer": "account-d.docusign.com", 
 
     "PrivateKeyPath": "private.key", 
 
-    "AccountId": "<your-account-id>"   
+    "AccountId": "account id",
+    
+    "TemplateId": "template id"
 
     } 
 
@@ -158,27 +160,22 @@ What each value means:
     
     -PrivateKeyPath → Path to RSA private key 
     
-    -AccountId → DocuSign account ID (numeric) 
+    -AccountId → DocuSign account ID (numeric)
+    
+    -TemplateID  →  Id of the template created for this process
 
 
 4.Add Your Private Key 
 
-    -Place RSA private key file in the project root: /private.key 
+    -Place RSA private key file in the project root: /private.key  
 
 
-5.Configure Your DocuSign Template 
-
-    -Copy the Template ID 
-        
-    -Paste it into Program.cs ( string templateId = "template-id"); 
-
-
-6.Run the Application 
+5.Run the Application 
 
     -dotnet run 
 
 
-7.Test Using Postman 
+6.Test Using Postman 
 
 Import the file : Employee Onboarding.postman_collection 
 
@@ -203,7 +200,7 @@ This collection includes:
     } 
 
 
-8.Copy the returned envelopeId and call: 
+7.Copy the returned envelopeId and call: 
 
     -GET /envelope-status/{envelopeId} 
 
